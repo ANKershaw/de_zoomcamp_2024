@@ -1,0 +1,8 @@
+FROM python:3.9
+
+RUN pip install pandas
+
+WORKDIR /app
+COPY process_data.py process_data.py
+
+ENTRYPOINT [ "python", "process_data.py" ]
