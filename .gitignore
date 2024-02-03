@@ -208,3 +208,4 @@ cython_debug/
 *.txt
 /week1/scratchpad
 .DS_Store
+/week2/mage/mage_data/
