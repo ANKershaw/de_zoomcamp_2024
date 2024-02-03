@@ -207,3 +207,4 @@ cython_debug/
 # personal notes
 *.txt
 /week1/scratchpad
+.DS_Store
