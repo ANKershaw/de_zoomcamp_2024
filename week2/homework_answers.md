@@ -10,7 +10,9 @@ Once the dataset is loaded, what's the shape of the data?
 
 <details>
 <summary> Picture proof</summary>
-![Proof of answer](markdown_images/Screenshot%202024-02-02%20at%202.47.48%E2%80%AFPM.png)
+
+![Proof of answer](markdown_images/question1.png)
+
 </details>
 
 
