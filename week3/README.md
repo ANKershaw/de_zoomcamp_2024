@@ -36,8 +36,8 @@ TIMESTAMP_SECONDS(CAST(lpep_pickup_datetime / 1000000000 AS INT)) AS lpep_pickup
 TIMESTAMP_SECONDS(CAST(lpep_dropoff_datetime / 1000000000 AS INT)) AS
 ```
 
-Data loader in mage : [here](week2/mage/magic-zoomcamp/data_loaders/taxi_parquet.py) <p>
-Data exporter in mage : [here](week2/mage/magic-zoomcamp/data_exporters/parquet_to_gcs.py)
+Data loader in mage : [here](../week2/mage/magic-zoomcamp/data_loaders/taxi_parquet.py) <p>
+Data exporter in mage : [here](../week2/mage/magic-zoomcamp/data_exporters/parquet_to_gcs.py)
 
 
 ## Question 1:
