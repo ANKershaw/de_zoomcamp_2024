@@ -21,7 +21,8 @@ select
         pickup_location_id,
         dropoff_location_id,
         sr_flag,
-        affiliated_base_number
+        affiliated_base_number,
+        service_type
 from fhv_trips
 inner join dim_zones as pickup_zone
 on fhv_trips.pickup_location_id = pickup_zone.locationid
