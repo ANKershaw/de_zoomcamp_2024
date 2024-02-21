@@ -24,14 +24,14 @@ instead. If you have access to GCP, you don't need to do it for local Postgres -
 You'll need to have completed the ["Build the first dbt models"](https://www.youtube.com/watch?v=UVI30Vxzd6c) video. 
 - It's the same as running *dbt build*
 - It applies a _limit 100_ to all of our models
-- It applies a _limit 100_ only to our staging models
+- **It applies a _limit 100_ only to our staging models <- answer** 
 - Nothing
 
 ### Question 2: 
 
 **What is the code that our CI job will run?**  
 
-- The code that has been merged into the main branch
+- **The code that has been merged into the main branch <- answer**
 - The code that is behind the object on the dbt_cloud_pr_ schema
 - The code from any development branch that has been opened based on main
 - The code from a development branch requesting a merge to main
@@ -48,9 +48,18 @@ Similar to what we've done in fact_trips, keep only records with known pickup an
 Run the dbt model without limits (is_test_run: false).
 
 - 12998722
-- 22998722
+- **22998722 <- answer**
 - 32998722
 - 42998722
+
+Notes:
+```
+BigQuery has the following data for the table 
+
+Storage info
+Number of rows
+22,998,722
+```
 
 ### Question 4: 
 
@@ -60,24 +69,7 @@ Create a dashboard with some tiles that you find interesting to explore the data
 
 - FHV
 - Green
-- Yellow
+- **Yellow <- answer**
 - FHV and Green
 
-
-## Submitting the solutions
-
-* Form for submitting: [TO DO]
-* You can submit your homework multiple times. In this case, only the last submission will be used. 
-
-Deadline: 22 February (Thursday), 22:00 CET
-
-
-## Solution (To be published after deadline)
-
-* Video: 
-* Answers:
-  * Question 1: 
-  * Question 2: 
-  * Question 3: 
-  * Question 4: 
-  * Question 5: 
+![question 4 answer](homework_images/question4.png)
