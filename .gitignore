@@ -212,3 +212,11 @@ cython_debug/
 mage-zoomcamp!/week4/test.py
 
 mage-zoomcamp
+!/week5/struct_type_homework
+!/week5/struct_type_lesson
+
+*.csv.gz
+*.csv
+*.parquet
+*.parquet.crc
+*.parquet.1
