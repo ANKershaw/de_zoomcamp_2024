@@ -77,10 +77,27 @@ Consider only trips that started on the 15th of October.
 - 108,164
 - 12,856
 - 452,470
-- 62,610
+- **62,610 <- answer**
 
-> [!IMPORTANT]
-> Be aware of columns order when defining schema
+```python
+#How many taxi trips were there on the 15th of October?
+# Consider only trips that started on the 15th of October.
+
+spark.sql("""
+SELECT 
+    count(1)
+FROM 
+    trips_data
+WHERE
+    to_date(pickup_datetime) = "2019-10-15"
+""").show()
+
++--------+
+|count(1)|
++--------+
+|   62610|
++--------+
+```
 
 ### Question 4: 
 
@@ -88,12 +105,32 @@ Consider only trips that started on the 15th of October.
 
 What is the length of the longest trip in the dataset in hours?
 
-- 631,152.50 Hours
+- **631,152.50 Hours <-answer** 
 - 243.44 Hours
 - 7.68 Hours
 - 3.32 Hours
 
+```python
+# this will give a difference in seconds between pickup and dropoff
+# divide by 3600 to get hours 
 
+spark.sql("""
+SELECT 
+    max(
+        unix_timestamp(dropOff_datetime) - unix_timestamp(pickup_datetime)
+    ) / 3600
+FROM 
+    trips_data
+WHERE
+""").show()
+
++----------------------------------------------------------------------------------------------------------------------------+
+|(max((unix_timestamp(dropOff_datetime, yyyy-MM-dd HH:mm:ss) - unix_timestamp(pickup_datetime, yyyy-MM-dd HH:mm:ss))) / 3600)|
++----------------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                    631152.5|
++----------------------------------------------------------------------------------------------------------------------------+
+
+```
 
 ### Question 5: 
 
@@ -103,10 +140,10 @@ Spark’s User Interface which shows the application's dashboard runs on which l
 
 - 80
 - 443
-- 4040
+- **4040 <- answer**
 - 8080
 
-
+`http://localhost:4040/jobs/`
 
 ### Question 6: 
 
@@ -118,12 +155,58 @@ Load the zone lookup data into a temp view in Spark</br>
 Using the zone lookup data and the FHV October 2019 data, what is the name of the LEAST frequent pickup location Zone?</br>
 
 - East Chelsea
-- Jamaica Bay
+- **Jamaica Bay <-answer**
 - Union Sq
 - Crown Heights North
 
+```python
+# Using the zone lookup data and the FHV October 2019 data, 
+# what is the name of the LEAST frequent pickup location Zone?
+
+# column from trips_data : PUlocationID
+# column from zone_lookup : LocationID
+spark.sql("""
+SELECT 
+    count(1),
+    zone_lookup.Zone 
+FROM 
+    trips_data
+LEFT JOIN 
+    zone_lookup
+ON
+    trips_data.PUlocationID = zone_lookup.LocationID 
+GROUP BY 
+    zone_lookup.Zone
+ORDER BY 
+    count(1) ASC
+""").show()
+
++--------+--------------------+
+|count(1)|                Zone|
++--------+--------------------+
+|       1|         Jamaica Bay|
+|       2|Governor's Island...|
+|       5| Green-Wood Cemetery|
+|       8|       Broad Channel|
+|      14|     Highbridge Park|
+|      15|        Battery Park|
+|      23|Saint Michaels Ce...|
+|      25|Breezy Point/Fort...|
+|      26|Marine Park/Floyd...|
+|      29|        Astoria Park|
+|      39|    Inwood Hill Park|
+|      47|       Willets Point|
+|      53|Forest Park/Highl...|
+|      57|  Brooklyn Navy Yard|
+|      62|        Crotona Park|
+|      77|        Country Club|
+|      89|     Freshkills Park|
+|      98|       Prospect Park|
+|     105|     Columbia Street|
+|     110|  South Williamsburg|
++--------+--------------------+
+```
 
 ## Submitting the solutions
 
 - Form for submitting: https://courses.datatalks.club/de-zoomcamp-2024/homework/hw5
-- Deadline: See the website

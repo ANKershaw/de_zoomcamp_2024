@@ -216,6 +216,7 @@ mage-zoomcamp
 !/week5/struct_type_lesson
 
 *.csv.gz
+.gz.*
 *.csv
 *.parquet
 *.parquet.crc

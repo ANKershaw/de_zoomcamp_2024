@@ -51,10 +51,7 @@ Consider only trips that started on the 15th of October.
 - 108,164
 - 12,856
 - 452,470
-- 62,610
-
-> [!IMPORTANT]
-> Be aware of columns order when defining schema
+- **62,610 <- answer**
 
 ### Question 4: 
 
@@ -62,10 +59,12 @@ Consider only trips that started on the 15th of October.
 
 What is the length of the longest trip in the dataset in hours?
 
-- 631,152.50 Hours
+- **631,152.50 Hours <-answer**
 - 243.44 Hours
 - 7.68 Hours
 - 3.32 Hours
+
+
 
 
 
@@ -77,7 +76,7 @@ Spark’s User Interface which shows the application's dashboard runs on which l
 
 - 80
 - 443
-- 4040
+- **4040 <- answer**
 - 8080
 
 
@@ -92,7 +91,7 @@ Load the zone lookup data into a temp view in Spark</br>
 Using the zone lookup data and the FHV October 2019 data, what is the name of the LEAST frequent pickup location Zone?</br>
 
 - East Chelsea
-- Jamaica Bay
+- **Jamaica Bay <-answer**
 - Union Sq
 - Crown Heights North
 
@@ -100,4 +99,3 @@ Using the zone lookup data and the FHV October 2019 data, what is the name of th
 ## Submitting the solutions
 
 - Form for submitting: https://courses.datatalks.club/de-zoomcamp-2024/homework/hw5
-- Deadline: See the website
