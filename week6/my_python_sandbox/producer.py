@@ -1,6 +1,7 @@
 from confluent_kafka import Producer, Consumer
 import os
 from dotenv import load_dotenv
+from kafka import KafkaProducer
 
 
 def read_config():
