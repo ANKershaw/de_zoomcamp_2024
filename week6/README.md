@@ -134,12 +134,19 @@ Now let's send our actual data:
 Iterate over the records in the dataframe
 
 ```python
+count = 0
 for row in df_green.itertuples(index=False):
-    row_dict = {col: getattr(row, col) for col in row._fields}
-    print(row_dict)
-    break
+    count += 1
+    message = row._asdict()
+    message['timestamp'] = datetime.datetime.now().__str__()
+    time.sleep(random.randrange(0, 10) / 1000)    
+    result = producer.send(topic_name, value=message)   
+    if count % 100 == 0:
+        print(f"Sent {count} records")
 
-    # TODO implement sending the data here
+print(f'sent a total of {count} records to topic')
+t1 = time.time()
+print(f'took {(t1 - t0):.2f} seconds')
 ```
 
 Note: this way of iterating over the records is more efficient compared
@@ -300,6 +307,10 @@ query.awaitTermination()
 
 Write the most popular destination. (You will need to re-send the data for this to work)
 
+```python
+popular_destinations = green_stream \
+    .groupBy('DOLocationID', (F.window(F.col("timestamp"), "5 minutes"))).count().orderBy('count', ascending=False)
+```
 Answer: 74
 
 ```commandline
